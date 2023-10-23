@@ -1,0 +1,23 @@
+.workspace{
+
+
+    &-list{
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+      border-top: 2px solid  #E4E9F3;
+      padding-top: 3rem;
+      margin: 0;
+
+      li{
+        display: flex;
+        gap: 1rem;
+        color: #B7BEC5;
+        cursor: pointer;
+      }
+    }
+  &-active *{
+    color: #007DFC;
+    fill: #007DFC;
+  }
+}

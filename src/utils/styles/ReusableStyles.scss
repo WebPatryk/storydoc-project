@@ -1,0 +1,39 @@
+.workspace{
+
+  &-edit{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: auto;
+
+  }
+  &-button{
+    background-color: transparent;
+    border:none;
+    padding: 0;
+    cursor: pointer;
+  }
+}
+.button{
+  &-add{
+    display: flex;
+    width: 100%;
+    padding: 16px 12px 16px 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    border-radius: 4px;
+    border: none;
+    color: var(--midnight-blue-500, #88819F);
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 600;
+    cursor: pointer;
+    background-color: transparent;
+
+    &-right-corner{
+      justify-content: flex-end;
+      align-items: flex-start;
+    }
+  }
+}

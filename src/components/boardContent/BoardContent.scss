@@ -1,0 +1,25 @@
+.workspace{
+  &-item{
+    display: flex;
+    padding: 16px;
+    border-radius: 8px;
+    background: #FFF;
+    box-shadow: 0px 0px 1px 0px rgba(18, 3, 62, 0.10), 0px 1px 1px 0px rgba(18, 3, 62, 0.10);
+    list-style-type: none;
+    width: 100%;
+    min-width: 278px;
+
+  }
+  &-text{
+    width: 90%;
+    font-size: 13px;
+    margin: 0;
+  }
+  &-edit-input{
+    border: none;
+    outline: none;
+  }
+
+
+
+}

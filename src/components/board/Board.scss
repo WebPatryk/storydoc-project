@@ -1,0 +1,25 @@
+.workspace{
+  background-color: #ECF1FD;
+  padding: 16px 8px 8px 8px;
+  gap: 16px;
+  border-radius: 16px;
+
+  &-task-title-container{
+    display: flex;
+  }
+  &-task-title{
+    margin: 0 0 16px 0;
+    font-size: 13px;
+    font-weight: 600;
+
+  }
+  &-wrapper{
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+
+}
