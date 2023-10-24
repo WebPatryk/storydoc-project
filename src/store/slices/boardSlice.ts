@@ -1,9 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { BoardInterface } from "../types";
 import { Logo } from "@/assets/icons";
+import { log } from "console";
 
 const initialState: BoardInterface | Record<string, never> = {
-  lists: [{ logo: "Logo", title: "Example" }],
+  lists: [{ id: crypto.randomUUID(), logo: "Logo", title: "Example" }],
 };
 
 const boardReducer = (state = initialState, action) => {
@@ -28,8 +29,20 @@ export const boardSlice = createSlice({
   initialState,
   reducers: {
     addBoard(state, action) {
-      console.log(state);
       state.lists.push(action.payload);
+    },
+    deleteBoard(state, action) {
+      const id = action.payload;
+      state.lists = state.lists.filter((item) => item.id !== id);
+
+      // state.lists = state.lists.filter((obj) => obj.id !== id);
+    },
+    updateBoard(state, action) {
+      // const { id, newValue } = action.payload;
+      // const objectToUpdate = state.list.filter(item.id === id);
+      // if (objectToUpdate) {
+      //   objectToUpdate.list = newValue;
+      // }
     },
   },
 });
@@ -51,4 +64,4 @@ export const boardSlice = createSlice({
 //   };
 // };
 
-export const { addBoard } = boardSlice.actions;
+export const { addBoard, deleteBoard, updateBoard } = boardSlice.actions;
