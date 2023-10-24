@@ -35,43 +35,43 @@ export const SingleWorkspace = ({ id, logo, title }: Props) => {
   };
 
   return (
-    <div
-      className="workspace-logo"
-      onMouseOver={handleMouseOver}
-      onMouseOut={handleMouseOut}
-    >
-      {logo === "Logo" && <Logo />}
-      {isEditing ? (
-        <input
-          type="text"
-          className="workspace-edit-input"
-          value={boardName}
-          onKeyDown={(e) => handleUpdateBoard(e, id)}
-          onChange={(e) => setBoardName(e.target.value)}
-        />
-      ) : (
-        <span>{title}</span>
-      )}
+      <div
+          className="workspace-logo"
+          onMouseOver={handleMouseOver}
+          onMouseOut={handleMouseOut}
+      >
+        {logo === "Logo" && <Logo />}
+        {isEditing ? (
+            <input
+                type="text"
+                className="workspace-edit-input"
+                value={boardName}
+                onKeyDown={(e) => handleUpdateBoard(e, id)}
+                onChange={(e) => setBoardName(e.target.value)}
+            />
+        ) : (
+            <span>{title}</span>
+        )}
 
-      {isHovering && (
-        <div className="workspace-edit">
-          <button
-            className="workspace-button"
-            onClick={() => {
-              setIsEditing(true);
-              setBoardName(title);
-            }}
-          >
-            <Pen />
-          </button>
-          <button
-            className="workspace-button"
-            onClick={() => handleDeleteBoard(id)}
-          >
-            <Trash />
-          </button>
-        </div>
-      )}
-    </div>
+        {isHovering && (
+            <div className="workspace-edit">
+              <button
+                  className="workspace-button"
+                  onClick={() => {
+                    setIsEditing(true);
+                    setBoardName(title);
+                  }}
+              >
+                <Pen />
+              </button>
+              <button
+                  className="workspace-button"
+                  onClick={() => handleDeleteBoard(id)}
+              >
+                <Trash />
+              </button>
+            </div>
+        )}
+      </div>
   );
 };
