@@ -16,7 +16,6 @@ export const MainBoard = () => {
   };
 
   const handleSaveItem = (e) => {
-    console.log(e.key);
     if (e.key === "Enter") {
       console.log("enter press here! ");
     }
@@ -26,8 +25,6 @@ export const MainBoard = () => {
     <ul className="board-container">
       <li>
         <Board />
-        <Board />
-
         <>
           {isCreating ? (
             <div className="board-create-wrapper">

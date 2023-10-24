@@ -2,7 +2,7 @@ import "./WorkspacesSidebar.scss";
 import { UserProfile } from "../userProfile";
 import { WorkspaceSettings } from "../workspaceSettings";
 import { WorkspaceHeader } from "../workspaceHeader";
-import { WorkspaceList } from "@/components/workspace-lists";
+import { WorkspaceList } from "@/components/workspaceLists";
 
 export const WorkspacesSidebar = () => {
   return (

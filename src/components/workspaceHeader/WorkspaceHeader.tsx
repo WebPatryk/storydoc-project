@@ -4,10 +4,12 @@ import { Logo, Pen, Plus, Trash } from "@/assets/icons";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addBoard } from "@/store/slices";
+import { SingleWorkspace } from "@/components/singleWorkspace";
 
 export const WorkspaceHeader = () => {
   const [isHovering, setIsHovering] = useState<boolean>(false);
   const [isCreating, setIsCreating] = useState(false);
+  const [boardValue, setBoardValue] = useState("");
   const [workspaces, setWorkspaces] = useState([
     { logo: <Logo />, title: "Acme Corp workspace" },
   ]);
@@ -15,7 +17,6 @@ export const WorkspaceHeader = () => {
 
   const dispatch = useDispatch();
 
-  console.log(boards);
   const handleMouseOver = () => {
     setIsHovering(true);
   };
@@ -25,52 +26,42 @@ export const WorkspaceHeader = () => {
   };
 
   const handleSaveNewWorkspace = (e) => {
-    // setWorkspaces([...workspaces, { logo: <Logo />, title: "ee" }]);
-    dispatch(addBoard({ logo: "", title: "New title" }));
-    console.log("enter press here! ");
+    e.preventDefault();
+    if (boardValue === "") return;
+    dispatch(
+      addBoard({ id: crypto.randomUUID(), logo: "", title: boardValue })
+    );
+
+    setIsCreating(false);
+    setBoardValue("");
+
     setIsCreating(false);
   };
   const componentMap = {
-    Logo, // Map "Logo" string to the Logo component
-    // Add other mappings for different components as needed
+    Logo,
   };
 
   return (
     <div className="workspace-container">
       {boards.map((workspace) => (
-        <div
-          className="workspace-logo"
-          onMouseOver={handleMouseOver}
-          onMouseOut={handleMouseOut}
-        >
-          {workspace.logo === "Logo" && <Logo />}
-          <span>{workspace.title}</span>
-          {isHovering && (
-            <div className="workspace-edit">
-              <button className="workspace-button">
-                <Pen />
-              </button>
-              <button className="workspace-button">
-                <Trash />
-              </button>
-            </div>
-          )}
-        </div>
+        <SingleWorkspace key={workspace.id} {...workspace} />
       ))}
       {isCreating ? (
-        <>
+        <form onSubmit={handleSaveNewWorkspace}>
           <div className="workspace-logo">
             <Logo />
             <input
               type="text"
               placeholder="Title of the new card"
               className="workspace-create-input"
+              value={boardValue}
+              onChange={(e) => setBoardValue(e.target.value)}
             />
           </div>
-          <button className="workspace-add" onClick={handleSaveNewWorkspace}>
+          <button className="workspace-add" type="submit">
             <span>✓ Save new workspace</span>
           </button>
-        </>
+        </form>
       ) : (
         <button className="workspace-add" onClick={() => setIsCreating(true)}>
           <Plus />

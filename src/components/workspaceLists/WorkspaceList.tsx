@@ -4,7 +4,6 @@ import { Board, Home, Magnifier, Profile } from "@/assets/icons";
 export const WorkspaceList = () => {
   return (
     <ul className="workspace-list">
-      {/*workspace-active*/}
       <li>
         <Home />
         <span>Dashboard</span>
